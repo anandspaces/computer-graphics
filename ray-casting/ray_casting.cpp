@@ -1,7 +1,7 @@
 #include <cmath>      // for sqrt()
 #include <fstream>   // for file output
 #include <iostream>  // for console output
-
+using namespace std;
 /* =======================
    3D Vector structure
    ======================= */
@@ -85,21 +85,21 @@ bool intersectSphere(Ray ray, Sphere sphere, float &t) {
 int main() {
 
     // Image resolution
-    const int WIDTH = 400;
-    const int HEIGHT = 300;
+    const int WIDTH = 800;
+    const int HEIGHT = 600;
 
     // Camera position
     Vec3 camera = {0, 0, 0};
 
     // One sphere in the scene
     Sphere sphere = {
-        {0, 0, -3},   // center
+        {0, 0, 0},   // center
         0.6f,         // radius
         {1, 0, 0}     // color (red)
     };
 
     // Open PPM image file
-    std::ofstream image("easy.ppm");
+    ofstream image("ray_casting.ppm");
     image << "P3\n" << WIDTH << " " << HEIGHT << "\n255\n";
 
     // Loop over every pixel
@@ -145,5 +145,5 @@ int main() {
     }
 
     image.close();
-    std::cout << "easy.ppm generated successfully\n";
+    cout << "ray_casting.ppm generated successfully\n";
 }

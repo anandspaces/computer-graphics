@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+using namespace std;
 
 /* =======================
    Vector math helpers
@@ -67,12 +68,12 @@ int main() {
     Vec3 lightPos = {2,2,0};
 
     // Scene with multiple spheres
-    std::vector<Sphere> scene = {
+    vector<Sphere> scene = {
         {{0,0,-3}, 0.5, {1,0,0}},
         {{1,-0.2,-4}, 0.7, {0,1,0}}
     };
 
-    std::ofstream image("proficient.ppm");
+    ofstream image("ray_casting_pro.ppm");
     image << "P3\n" << WIDTH << " " << HEIGHT << "\n255\n";
 
     // Loop over pixels
@@ -137,7 +138,7 @@ int main() {
                 }
 
                 // Lambertian lighting
-                float intensity = std::max(0.0f, dot(N, L));
+                float intensity = max(0.0f, dot(N, L));
                 if(inShadow) intensity *= 0.2f;
 
                 color = multiply(s.color, intensity);
@@ -151,5 +152,5 @@ int main() {
     }
 
     image.close();
-    std::cout << "proficient.ppm generated successfully\n";
+    cout << "ray_casting_pro.ppm generated successfully\n";
 }
